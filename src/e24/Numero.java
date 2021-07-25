@@ -1,4 +1,4 @@
-package e23;
+package e24;
 
 public enum Numero {
     AS("1"),

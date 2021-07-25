@@ -2,76 +2,59 @@ package e23;
 
 public class Carta {
     // Estado - Definidos final porque la clase es inmutable
-    private final Numero numero;
-    private final Palo palo;
+    private final int numero;
+    private final String palo;
 
     // Comportamiento
     // getters
-    public Numero getNumero() {
+    public int getNumero() {
         return numero;
     }
-    public Palo getPalo() {
+
+    public String getPalo() {
         return palo;
     }
 
     // setters - Eliminados para hacer la clase inmutable
 
     // Creación de objetos
-    public Carta(Numero numero, Palo palo) {
+
+    public Carta(int numero, String palo) {
         this.numero = numero;
         this.palo = palo;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object obj) {
+        if (this == obj) { return true; }
+        if (obj == null) { return false; }
+        if (this.getClass() != obj.getClass()) { return false; }
 
-        Carta carta = (Carta) o;
-
-        if (numero != carta.numero) return false;
-        return palo.equals(carta.palo);
+        // obj es una carta no nula y no igual a this
+        Carta carta = (Carta) obj;
+        if (this.numero != carta.numero) { return false; }
+        return this.palo.equals(carta.palo);
     }
 
-    @Override
-    public int hashCode() {
-        int result = numero.hashCode();
+    public int hashCode() { // hash 31
+        int result = numero;
         result = 31 * result + palo.hashCode();
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "[" + numero + palo + "]";
-    }
-
     public static void main(String[] args) {
-        Carta c1 = new Carta(Numero.CINCO, Palo.ESPADAS);
-        Carta c2 = new Carta(Numero.CINCO, Palo.ESPADAS);
-        Carta c3 = new Carta(Numero.CINCO, Palo.OROS);
-        System.out.println("c1 = " + c1);
-        System.out.println("c2 = " + c2);
-        System.out.println("c3 = " + c3);
+        Carta c1 = new Carta(5, "Espadas");
+        Carta c2 = new Carta(5, "Espadas");
+        Carta c3 = new Carta(5, "Oros");
 
            //   ==
         if (c1.equals(c2))
-            System.out.println("c1 y c2 son iguales");
+            System.out.println("son iguales");
         else
-            System.out.println("c1 y c2 on distintas");
+            System.out.println("Son distintas");
 
         System.out.println("c1.hashCode() = " + c1.hashCode());
         System.out.println("c2.hashCode() = " + c2.hashCode());
         System.out.println("c3.hashCode() = " + c3.hashCode());
 
-        System.out.println("Palos");
-        for(Palo p : Palo.values())
-            System.out.println(p);
-
-        System.out.println("Números");
-        for (Numero n : Numero.values())
-            System.out.println(n);
-
-        if(Numero.SOTA.ordinal() > Numero.DOS.ordinal())
-            System.out.println("sota > dos");
     }
 }
