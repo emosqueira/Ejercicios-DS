@@ -1,7 +1,5 @@
 package e66.problem;
 
-// https://danparkin.com/2018/09/18/tell-dont-ask/
-
 public class Client {
     private final Collaborator collaborator;
     private int clientInternalDetail1;

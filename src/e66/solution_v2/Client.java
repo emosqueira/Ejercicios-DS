@@ -1,7 +1,5 @@
 package e66.solution_v2;
 
-
-
 public class Client {
     private final Collaborator collaborator;
     private int clientInternalDetail1;
